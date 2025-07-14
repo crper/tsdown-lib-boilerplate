@@ -19,11 +19,13 @@
     "build": "tsdown",
     "bench": "vitest bench --run",
     "prepare": "simple-git-hooks install",
-    "run:example": "npx tsx examples/01-basic-example.ts",
-    "type-check": "tsc --noEmit",
+    "example": "npx tsx examples/01-basic-example.ts",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
-    "changelog:full": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0"
+    "changelog:full": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0",
+    "prepublishOnly": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
+    "publish:dry": "npm publish --dry-run"
   },
   "keywords": [
     "tsdown",
